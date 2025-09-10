@@ -1,28 +1,113 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}PSUSphere{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSUSphere</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/ready.css' %}">
   <link rel="stylesheet" href="{% static 'css/demo.css' %}">
 </head>
+
 <body>
-  <div class="main-panel">
-    {% block content %}{% endblock %}
-    <div class="content">
-      <!-- (all codes in content div will be replaced by child templates like home.html) -->
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar" data-background-color="dark">
+      <div class="sidebar-wrapper">
+        <!-- Logo + Profile Image -->
+        <div class="logo d-flex align-items-center">
+          <div class="u-img mr-2">
+            <img src="{% static 'img/profile.jpg' %}" alt="user" width="36" class="img-circle">
+          </div>
+          <a href="/" class="simple-text">PSUSphere</a>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <ul class="nav">
+          <!-- Dashboard -->
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="la la-home"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <!-- Organizations -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'organization-list' %}">
+              <i class="la la-building"></i>
+              <p>Organizations</p>
+            </a>
+          </li>
+
+          <!-- Org Members -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'orgmember-list' %}">
+              <i class="la la-users"></i>
+              <p>Org Members</p>
+            </a>
+          </li>
+
+          <!-- Students -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'student-list' %}">
+              <i class="la la-graduation-cap"></i>
+              <p>Students</p>
+            </a>
+          </li>
+
+          <!-- Colleges -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'college-list' %}">
+              <i class="la la-university"></i>
+              <p>Colleges</p>
+            </a>
+          </li>
+
+          <!-- Programs -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'program-list' %}">
+              <i class="la la-book"></i>
+              <p>Programs</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Panel -->
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Dashboard</a>
+          <!-- User Profile (Top Right) -->
+          <div class="user-box ml-auto">
+            <div class="u-img">
+              <img src="{% static 'img/profile.jpg' %}" alt="user" width="36" class="img-circle">
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="container-fluid">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- JS -->
   <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
-  <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
   <script src="{% static 'js/core/popper.min.js' %}"></script>
   <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
   <script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
   <script src="{% static 'js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %}"></script>
   <script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
@@ -33,5 +118,5 @@
   <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
   <script src="{% static 'js/ready.min.js' %}"></script>
 </body>
-</html>
 
+</html>

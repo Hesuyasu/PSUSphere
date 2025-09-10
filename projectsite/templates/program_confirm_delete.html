@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Delete Program</h4>
+        <div class="card">
+            <div class="card-body">
+                <p>Are you sure you want to delete <strong>{{ object.name }}</strong>?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <a href="{% url 'program-list' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
