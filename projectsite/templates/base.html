@@ -4,74 +4,130 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PSUSphere</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>{% block title %}PSUSphere{% endblock %}</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900">
   <link rel="stylesheet" href="{% static 'css/ready.css' %}">
   <link rel="stylesheet" href="{% static 'css/demo.css' %}">
 </head>
 
 <body>
   <div class="wrapper">
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="logo-header">
+        <a href="{% url 'home' %}" class="logo">
+          PSUSphere
+        </a>
+        <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+          data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+      </div>
+
+      <!-- Top Navbar -->
+      <nav class="navbar navbar-header navbar-expand-lg">
+        <div class="container-fluid">
+          <!-- Search -->
+          <form class="navbar-left navbar-form nav-search mr-md-3">
+            <div class="input-group">
+              <input type="text" placeholder="Search ..." class="form-control">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="la la-search"></i></span>
+              </div>
+            </div>
+          </form>
+
+          <!-- User + Notifications -->
+          <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+            <!-- Notifications -->
+            <li class="nav-item dropdown hidden-caret">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                <i class="la la-bell"></i>
+                <span class="notification">3</span>
+              </a>
+              <ul class="dropdown-menu notif-box">
+                <li>
+                  <div class="dropdown-title">You have 3 notifications</div>
+                </li>
+                <li><a class="see-all" href="#">See all <i class="la la-angle-right"></i></a></li>
+              </ul>
+            </li>
+            <!-- User Profile -->
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+                <img src="{% static 'img/profile.jpg' %}" width="36" class="img-circle"> <span>User</span>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li>
+                  <div class="user-box">
+                    <div class="u-img"><img src="{% static 'img/profile.jpg' %}" alt="user"></div>
+                    <div class="u-text">
+                      <h4>PSUSphere User</h4>
+                      <p class="text-muted">example@email.com</p>
+                    </div>
+                  </div>
+                </li>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
+                <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
     <!-- Sidebar -->
-    <div class="sidebar" data-background-color="dark">
-      <div class="sidebar-wrapper">
-        <!-- Logo + Profile Image -->
-        <div class="logo d-flex align-items-center">
-          <div class="u-img mr-2">
-            <img src="{% static 'img/profile.jpg' %}" alt="user" width="36" class="img-circle">
+    <div class="sidebar">
+      <div class="scrollbar-inner sidebar-wrapper">
+        <div class="user">
+          <div class="photo">
+            <img src="{% static 'img/profile.jpg' %}">
           </div>
-          <a href="/" class="simple-text">PSUSphere</a>
+          <div class="info">
+            <span>PSUSphere User</span>
+            <span class="user-level">Administrator</span>
+          </div>
         </div>
 
         <!-- Sidebar Menu -->
         <ul class="nav">
-          <!-- Dashboard -->
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">
-              <i class="la la-home"></i>
+            <a href="{% url 'home' %}"><i class="la la-home"></i>
               <p>Dashboard</p>
             </a>
           </li>
-
-          <!-- Organizations -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'organization-list' %}">
-              <i class="la la-building"></i>
+            <a href="{% url 'organization-list' %}"><i class="la la-building"></i>
               <p>Organizations</p>
             </a>
           </li>
-
-          <!-- Org Members -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'orgmember-list' %}">
-              <i class="la la-users"></i>
+            <a href="{% url 'orgmember-list' %}"><i class="la la-users"></i>
               <p>Org Members</p>
             </a>
           </li>
-
-          <!-- Students -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'student-list' %}">
-              <i class="la la-graduation-cap"></i>
+            <a href="{% url 'student-list' %}"><i class="la la-graduation-cap"></i>
               <p>Students</p>
             </a>
           </li>
-
-          <!-- Colleges -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'college-list' %}">
-              <i class="la la-university"></i>
+            <a href="{% url 'college-list' %}"><i class="la la-university"></i>
               <p>Colleges</p>
             </a>
           </li>
-
-          <!-- Programs -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'program-list' %}">
-              <i class="la la-book"></i>
+            <a href="{% url 'program-list' %}"><i class="la la-book"></i>
               <p>Programs</p>
             </a>
           </li>
@@ -81,20 +137,6 @@
 
     <!-- Main Panel -->
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Dashboard</a>
-          <!-- User Profile (Top Right) -->
-          <div class="user-box ml-auto">
-            <div class="u-img">
-              <img src="{% static 'img/profile.jpg' %}" alt="user" width="36" class="img-circle">
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Page Content -->
       <div class="content">
         <div class="container-fluid">
           {% block content %}{% endblock %}
