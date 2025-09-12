@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900">
   <link rel="stylesheet" href="{% static 'css/ready.css' %}">
-  <link rel="stylesheet" href="{% static 'css/demo.css' %}">
+  <link rel="stylesheet" href="{% static 'css/de  mo.css' %}">
 </head>
 
 <body>
@@ -62,15 +62,16 @@
             <!-- User Profile -->
             <li class="nav-item dropdown">
               <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
-                <img src="{% static 'img/profile.jpg' %}" width="36" class="img-circle"> <span>User</span>
+                <img src="{% static 'img/profile.jpg' %}" width="36" class="img-circle">
+                <span>{{ request.user.username }}</span>
               </a>
               <ul class="dropdown-menu dropdown-user">
                 <li>
                   <div class="user-box">
                     <div class="u-img"><img src="{% static 'img/profile.jpg' %}" alt="user"></div>
                     <div class="u-text">
-                      <h4>PSUSphere User</h4>
-                      <p class="text-muted">example@email.com</p>
+                      <h4>{{ request.user.username }}</h4>
+                      <p class="text-muted">{{ request.user.email }}</p>
                     </div>
                   </div>
                 </li>
@@ -78,7 +79,7 @@
                 <a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
                 <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                <a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> Logout</a>
               </ul>
             </li>
           </ul>
@@ -94,8 +95,14 @@
             <img src="{% static 'img/profile.jpg' %}">
           </div>
           <div class="info">
-            <span>PSUSphere User</span>
-            <span class="user-level">Administrator</span>
+            <span>{{ request.user.username }}</span>
+            <span class="user-level">
+              {% if request.user.is_superuser %}
+              Administrator
+              {% else %}
+              User
+              {% endif %}
+            </span>
           </div>
         </div>
 
