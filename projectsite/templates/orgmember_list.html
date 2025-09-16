@@ -12,6 +12,26 @@
                 <a href="{% url 'orgmember-add' %}" class="btn btn-success btn-rounded">+ Add Member</a>
             </div>
             <div class="card-body">
+
+                <form method="get" action="{% url 'orgmember-list' %}" class="form-inline mb-3">
+                    <input type="text" name="q" class="form-control mr-2"
+                        placeholder="Search by student or organization..." value="{{ request.GET.q }}">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    {% if request.GET.q %}
+                    <a href="{% url 'orgmember-list' %}" class="btn btn-secondary ml-2">Clear</a>
+                    {% endif %}
+
+                    <select name="sort" class="form-control ml-3" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
+                        <option value="student__lastname" {% if request.GET.sort == "student__lastname" %}selected{% endif %}>Student (A-Z)</option>
+                        <option value="-student__lastname" {% if request.GET.sort == "-student__lastname" %}selected{% endif %}>Student (Z-A)</option>
+                        <option value="organization__name" {% if request.GET.sort == "organization__name" %}selected{% endif %}>Organization (A-Z)</option>
+                        <option value="-organization__name" {% if request.GET.sort == "-organization__name" %}selected{% endif %}>Organization (Z-A)</option>
+                        <option value="date_joined" {% if request.GET.sort == "date_joined" %}selected{% endif %}>Date Joined (Oldest)</option>
+                        <option value="-date_joined" {% if request.GET.sort == "-date_joined" %}selected{% endif %}>Date Joined (Newest)</option>
+                    </select>
+                </form>
+
                 <table class="table table-striped mt-3">
                     <thead>
                         <tr>

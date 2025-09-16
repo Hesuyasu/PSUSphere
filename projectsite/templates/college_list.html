@@ -12,6 +12,15 @@
                 <a href="{% url 'college-add' %}" class="btn btn-success btn-rounded">+ Add College</a>
             </div>
             <div class="card-body">
+                <form method="get" action="{% url 'college-list' %}" class="form-inline mb-3">
+                    <input type="text" name="q" class="form-control mr-2" placeholder="Search colleges..."
+                        value="{{ request.GET.q }}">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    {% if request.GET.q %}
+                    <a href="{% url 'college-list' %}" class="btn btn-secondary ml-2">Clear</a>
+                    {% endif %}
+                </form>
+
                 <table class="table table-striped mt-3">
                     <thead>
                         <tr>

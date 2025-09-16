@@ -12,6 +12,24 @@
                 <a href="{% url 'program-add' %}" class="btn btn-success btn-rounded">+ Add Program</a>
             </div>
             <div class="card-body">
+                <form method="get" action="{% url 'program-list' %}" class="form-inline mb-3">
+                    <input type="text" name="q" class="form-control mr-2" placeholder="Search programs or colleges..."
+                        value="{{ request.GET.q }}">
+
+                    <select name="sort" class="form-control mr-2">
+                        <option value="">Sort By</option>
+                        <option value="prog_name" {% if request.GET.sort == "prog_name" %}selected{% endif %}>Program Name (A-Z)</option>
+                        <option value="-prog_name" {% if request.GET.sort == "-prog_name" %}selected{% endif %}>Program Name (Z-A)</option>
+                        <option value="college__college_name" {% if request.GET.sort == "college__college_name" %}selected{% endif %}>College (A-Z)</option>
+                        <option value="-college__college_name" {% if request.GET.sort == "-college__college_name" %}selected{% endif %}>College (Z-A)</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                    {% if request.GET.q or request.GET.sort %}
+                    <a href="{% url 'program-list' %}" class="btn btn-secondary ml-2">Clear</a>
+                    {% endif %}
+                </form>
+
                 <table class="table table-striped mt-3">
                     <thead>
                         <tr>

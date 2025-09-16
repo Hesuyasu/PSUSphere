@@ -12,6 +12,23 @@
                 <a href="{% url 'student-add' %}" class="btn btn-success btn-rounded">+ Add Student</a>
             </div>
             <div class="card-body">
+                <form method="get" action="{% url 'student-list' %}" class="form-inline mb-3">
+                    <input type="text" name="q" class="form-control mr-2"
+                        placeholder="Search by ID, name, or program..." value="{{ request.GET.q }}">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    {% if request.GET.q %}
+                    <a href="{% url 'student-list' %}" class="btn btn-secondary ml-2">Clear</a>
+                    {% endif %}
+
+                    <select name="sort" class="form-control ml-3" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
+                        <option value="lastname" {% if request.GET.sort == "lastname" %}selected{% endif %}>Last Name (A-Z)</option>
+                        <option value="-lastname" {% if request.GET.sort == "-lastname" %}selected{% endif %}>Last Name (Z-A)</option>
+                        <option value="student_id" {% if request.GET.sort == "student_id" %}selected{% endif %}>Student ID (Asc)</option>
+                        <option value="-student_id" {% if request.GET.sort == "-student_id" %}selected{% endif %}>Student ID (Desc)</option>
+                    </select>
+                </form>
+
                 <table class="table table-striped mt-3">
                     <thead>
                         <tr>
