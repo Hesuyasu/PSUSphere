@@ -15,6 +15,13 @@ import socket
 SITE_ID = 2 if "pythonanywhere" in socket.gethostname() else 1
 
 
+ACCOUNT_SIGNUP_FORM_CLASS = "studentorg.forms.CustomSignupForm"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+
 #Sign in
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -25,6 +32,10 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_METHODS = {"username", "email"}
 ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
+ACCOUNT_UNIQUE_EMAIL = True
+
+# Email backend for development
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,7 +69,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    "crispy_forms",
+    "crispy_bootstrap5",
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
