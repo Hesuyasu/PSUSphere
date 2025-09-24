@@ -4,11 +4,6 @@ from django import forms
 from allauth.account.forms import SignupForm
 
 class CustomSignupForm(SignupForm):
-    """
-    Extends the default allauth signup form.
-    Allauth already has username, email, password1, password2.
-    We'll just add first_name and last_name.
-    """
     first_name = forms.CharField(max_length=30, label="First Name", required=True)
     last_name = forms.CharField(max_length=30, label="Last Name", required=True)
 

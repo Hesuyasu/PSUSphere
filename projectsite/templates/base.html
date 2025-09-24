@@ -8,8 +8,6 @@
   <title>{% block title %}PSUSphere{% endblock %}</title>
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" />
-
-  <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900">
   <link rel="stylesheet" href="{% static 'css/ready.css' %}">
@@ -18,7 +16,6 @@
 
 <body>
   <div class="wrapper">
-    <!-- Main Header -->
     <div class="main-header">
       <div class="logo-header">
         <a href="{% url 'home' %}" class="logo">
@@ -30,11 +27,8 @@
         </button>
         <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
       </div>
-
-      <!-- Top Navbar -->
       <nav class="navbar navbar-header navbar-expand-lg">
         <div class="container-fluid">
-          <!-- Search -->
           <form class="navbar-left navbar-form nav-search mr-md-3">
             <div class="input-group">
               <input type="text" placeholder="Search ..." class="form-control">
@@ -43,10 +37,7 @@
               </div>
             </div>
           </form>
-
-          <!-- User + Notifications -->
           <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-            <!-- Notifications -->
             <li class="nav-item dropdown hidden-caret">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                 <i class="la la-bell"></i>
@@ -59,7 +50,6 @@
                 <li><a class="see-all" href="#">See all <i class="la la-angle-right"></i></a></li>
               </ul>
             </li>
-            <!-- User Profile -->
             <li class="nav-item dropdown">
               <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
                 <img src="{% static 'img/profile.jpg' %}" width="36" class="img-circle">
@@ -86,8 +76,6 @@
         </div>
       </nav>
     </div>
-
-    <!-- Sidebar -->
     <div class="sidebar">
       <div class="scrollbar-inner sidebar-wrapper">
         <div class="user">
@@ -105,8 +93,6 @@
             </span>
           </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <ul class="nav">
           <li class="nav-item active">
             <a href="{% url 'home' %}"><i class="la la-home"></i>
@@ -141,8 +127,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- Main Panel -->
     <div class="main-panel">
       <div class="content">
         <div class="container-fluid">
@@ -151,8 +135,6 @@
       </div>
     </div>
   </div>
-
-  <!-- JS -->
   <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
   <script src="{% static 'js/core/popper.min.js' %}"></script>
   <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
