@@ -67,6 +67,7 @@ urlpatterns = [
     path("program_list/<pk>/delete",
          ProgramDeleteView.as_view(), name="program-delete"),
 
-    path("accounts/", include("allauth.urls")),  # 🔑 Allauth routes
+    path("accounts/", include("allauth.urls")), 
     path('', include('pwa.urls')),
+    path('api/', include('api.urls')),
 ]
